@@ -1,0 +1,272 @@
+    <!-- templates/home.html -->
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<title>Assessment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<body>
+
+<div class="w3-sidebar w3-bar-block w3-teal w3-card" style="width:20%">
+  <h5 class="w3-bar-item"> GROUTH PLUG </h5>
+  <button class="w3-bar-item w3-button active" id="defaultOpen" onclick="openLink(event, 'Fade')"> Dashboard</button>
+  <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Left')"> Website</button>
+  <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Right')"> Visitors</button>
+  <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Top')"> Reviews</button>
+  <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Bottom')"> Listing</button>
+  <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'Zoom')"> Appointments</button>
+  <button class="w3-bar-item w3-button tablink" onclick="openLink(event, 'one')"> Settings</button>
+</div>
+
+<div style="margin-left:20%">
+<!--  <div class="w3-padding">-->
+<div class="w3-container bg-info text-right" >
+    <button class="btn btn-danger">
+           <a href="{% url 'logout' %}"><p style="color:white">Logout </p></a>
+    </button>
+</div>
+<!--  </div>-->
+
+
+  <div id="Fade" class="w3-container city w3-animate-opacity" style="display:none">
+      <br/>
+   <h3 class="text-center">Welcome {{ user.username }}</h3>
+      <div class="w3-container" id="about">
+
+          <div>
+ <div class="w3-content w3-section" style="max-width:500px">
+        <img class="mySlides" src="{% static 'images/img2.jpeg' %}" style="width:100%;max-width:1000px">
+        <img class="mySlides" src="{% static 'images/img1.jpg' %}" style="width:100%;max-width:1000px">
+        <img class="mySlides" src="{% static 'images/img3.jpg' %}" style="width:100%;max-width:1000px">
+         <img class="mySlides" src="{% static 'images/img4.svg' %}" style="width:100%;max-width:1000px">
+        </div>
+        </div>
+
+<!--             <img src="" alt="My image"  class="w3-margin-top"/>-->
+
+  <div class="w3-content" style="max-width:700px">
+    <h4 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">ABOUT THE GrowthPlug</span></h4>
+<h5>GrowthPlug was founded in Silicon Valley to help healthcare practices become modern, efficient and grow online by delivering a patient first experience.</h5>
+    <p>We are growing fast and radically changing the way today’s healthcare practices acquire and retain patients.</p>
+      <p></p>
+      <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><i>"GrowthPlug is proud to have helped hundreds of different types of healthcare practices across US who rely on us daily."</i></p>
+
+    </div>
+  </div>
+</div>
+
+    <!-- Menu Container -->
+<div class="w3-container" id="menu">
+  <div class="w3-content" style="max-width:700px">
+
+    <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">THE MENU</span></h5>
+
+    <div class="w3-row w3-center w3-card w3-padding">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Eat');" id="myLink">
+        <div class="w3-col s6 tablink">Vision</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s6 tablink"> Mission </div>
+      </a>
+    </div>
+
+    <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Statement</h5>
+      <p class="w3-text-grey">“Our vision is to create a better everyday life for many people.”</p><br>
+
+        <p>&#9632;Keep it short. A typical vision statement is brief and succinct; it will say a lot in just a few words, so those words must be very carefully chosen.
+</p>
+
+        <p>&#9632; Think long term. The key to a good vision statement is to think of things in a long-term, broad sense, but without sounding generic.
+ </p>
+
+        <p>&#9632; Don't be too specific. If you are, you will limit your vision, and it won't be applicable five years down the road.
+  </p>
+
+        <p>&#9632; Be clear about your company. The best statement will be clear about who you are as a company, as well as who you wish to become.
+  </p>
+    </div>
+
+    <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
+      <h5>Statement</h5>
+      <p class="w3-text-grey"> "Our Roadmap starts with our mission, which is enduring. It declares our purpose as a company and serves as the standard against which we weigh our actions and decisions.
+</p><br>
+
+          <p>&#9632; To refresh the world... </p>
+
+        <p>&#9632; To inspire moments of optimism and happiness... </p>
+
+        <p>&#9632; To create value and make a difference. </p>
+
+
+    </div>
+  </div>
+</div>
+
+    <br/>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <h3 align="center"><i> " ThankYou "</i></h3>
+
+    </div>
+
+
+  </div>
+
+  <div id="Left" class="w3-container city w3-animate-left" style="display:none">
+      <br/>
+    {% for ass in backends.associated %}
+          {% if ass.provider == 'facebook' %}
+            <div class="col-md-6 social-container my-2">
+                <h3 class="text-center"> Your FaceBook Profile Url: <a href="{{ass.extra_data.profile_url}}">link</a></h3>
+            </div>
+          {% endif %}
+        {% endfor %}
+  </div>
+
+  <div id="Top" class="w3-container city w3-animate-top" style="display:none">
+      <br/>
+      <div style="max-width:900px" align="center">
+          {% include "reviews.html" %}
+      </div>
+  </div>
+
+  <div id="Right" class="w3-container city w3-animate-right" style="display:none">
+      <br/>
+   <h2> Visitors....</h2>
+        {% for ass in backends.associated %}
+          {% if ass.provider == 'facebook' %}
+            <div class="col-md-6">
+                <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+            </div>
+            <div class="col-md-6 social-container my-2">
+                <p> Name:  {{ ass.extra_data.name }} </p>
+            </div>
+          {% endif %}
+        {% endfor %}
+  </div>
+
+  <div id="Bottom" class="w3-container city w3-animate-bottom" style="display:none">
+      <br/>
+      <div class="w3-container">
+                    <div class="p-3 mb-2 bg-secondary text-white">
+                    <h3 align="center">Listing</h3>
+                        </div>
+                <table class="table">
+
+                      <thead class="table-light">
+                        <tr>
+                          <th scope="col">Source</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">email</th>
+                          <th scope="col">First_name</th>
+                            <th scope="col">Last_name</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+{% for ass in backends.associated %}
+                        <tr>
+                          <th> {{ ass.provider }} </th>
+                          <td>{{ ass.extra_data.name }} </td>
+                            <td>{{ ass.extra_data.email }}</td>
+                            <td>{{ ass.extra_data.first_name }}</td>
+                            <td>{{ ass.extra_data.last_name }}</td>
+                            <td>{{ ass.extra_data.location }}</td>
+                            <td>{{ ass.extra_data.accounts }}</td>
+                          <td><button type="button" class="btn btn-primary"><a href="{{ass.extra_data.profile_url}}" target="_blank"><span style="color:white">View</span></a></button></td>
+                        </tr>
+ {% endfor %}
+
+                      </tbody>
+                </table>
+
+            </div>
+  </div>
+
+  <div id="Zoom" class="w3-container city w3-animate-zoom" style="display:none">
+      <br/>
+<h2>Appointments....</h2>
+        {% for ass in backends.associated %}
+          {% if ass.provider == 'facebook' %}
+            <div class="col-md-6">
+                <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+            </div>
+
+          {% endif %}
+        {% endfor %}
+  </div>
+
+  <div id="one" class="w3-container city w3-animate-zoom" style="display:none">
+      <br/>
+<div class="col-sm-12 mt-2 text-center">
+          <button class="btn btn-danger">
+           <h4> <a href="{% url 'logout' %}">Logout</a></h4>
+          </button>
+        </div>
+  </div>
+
+
+</div>
+
+<script>
+function openLink(evt, animName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(animName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+  evt.currentTarget.className += " active";
+}
+
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-dark-grey", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-dark-grey";
+}
+document.getElementById("defaultOpen").click();
+document.getElementById("myLink").click();
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 3000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+</html>
