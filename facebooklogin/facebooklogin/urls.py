@@ -26,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("login/", views.login, name="login"),
     path("logout/", auth_views.LogoutView.as_view(), name="logout"),
-    path('social-auth/', include('social_django.urls', namespace="social")),
+    path('accounts/', include('allauth.urls')),
+    # path('social-auth/', include('social_django.urls', namespace="social")),
     path("", views.home, name="home"),
     path("verityuser/",views.verityuser,name="verityuser"),
 
