@@ -37,67 +37,85 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'fuser',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
 
-    'social_django'
+    # 'social_django'
 ]
 
-SOCIAL_AUTH_FACEBOOK_KEY = '683114858896499'       # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '2ee96b7078ce05b083f072851b226035'
+SITE_ID = 1
 
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = { 'fields': 'id,name, email, picture.type(large),last_name, location,first_name, address, accounts, likes, link,gender' }
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
-    ('name', 'name'),
-    ('email', 'email'),
-    ('picture', 'picture'),
-    ('link', 'profile_url'),
-    ('accounts', 'accounts'),
-    ('likes', 'likes'),
-    ('address','address'),
 
-    ('gender','gender'),
-    ('first_name','first_name'),
-    ('last_name', 'last_name'),
+
+# SOCIAL_AUTH_FACEBOOK_KEY = '683114858896499'       # App ID
+# SOCIAL_AUTH_FACEBOOK_SECRET = '2ee96b7078ce05b083f072851b226035'
+
+# SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = { 'fields': 'id,name, email, picture.type(large),last_name, location,first_name, address, accounts, likes, link,gender' }
+# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+#     ('name', 'name'),
+#     ('email', 'email'),
+#     ('picture', 'picture'),
+#     ('link', 'profile_url'),
+#     ('accounts', 'accounts'),
+#     ('likes', 'likes'),
+#     ('address','address'),
+#
+#     ('gender','gender'),
+#     ('first_name','first_name'),
+#     ('last_name', 'last_name'),
 # ('user_birthday','user_birthday'),
     # ('user_location','user_location'),
     # ('publish_pages','publish_pages'),
     # ('pages_show_list','pages_show_list'),
     # ('user_posts','user_posts'), user_posts,pages_show_list,publish_pages, user_location,middle_name,  user_birthday,first_name
 
-]
-# SOCIALACCOUNT_PROVIDERS = {
-#     "facebook": {
-#         "METHOD": "oauth2",
-#         "SCOPE": ["email", "public_profile", "user_about_me"],
-#         "AUTH_PARAMS": {},  # {'auth_type': 'reauthenticate'},
-#         "INIT_PARAMS": {"cookie": True},
-#         "FIELDS": [
-#             "id",
-#             "email",
-#             "name",
-#             "first_name",
-#             "last_name",
-#             "verified",
-#             "locale",
-#             "timezone",
-#             "link",
-#             "gender",
-#             "updated_time",
-#         ],
-#         "EXCHANGE_TOKEN": True,
-#         "LOCALE_FUNC": "path.to.callable",
-#         "VERIFIED_EMAIL": True,
-#         "VERSION": "v2.5",
-#     },
-#     # "google": {"SCOPE": ["profile", "email"], "AUTH_PARAMS": {"access_type": "online"}},
-# }
+# ]
+SOCIALACCOUNT_PROVIDERS = {
+    "facebook": {
+        "METHOD": "oauth2",
+        "SCOPE": ['email', 'user_link'],
+        "AUTH_PARAMS": {},  # {'auth_type': 'reauthenticate'},
+        "INIT_PARAMS": {"cookie": True},
+        "FIELDS": [
+            "picture.type(large)",
+            "accounts",
+            "likes",
+
+            "id",
+            "email",
+            "name",
+            "first_name",
+            "last_name",
+            "verified",
+            "locale",
+            "timezone",
+            "link",
+            "gender",
+            "updated_time",
+        ],
+        "EXCHANGE_TOKEN": True,
+        "LOCALE_FUNC": "path.to.callable",
+        "VERIFIED_EMAIL": True,
+        "VERSION": "v2.5",
+    },
+    # "google": {"SCOPE": ["profile", "email"], "AUTH_PARAMS": {"access_type": "online"}},
+}
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
+    # 'social_core.backends.linkedin.LinkedinOAuth2',
+    # 'social_core.backends.instagram.InstagramOAuth2',
+    # 'social_core.backends.facebook.FacebookOAuth2',
+    # 'django.contrib.auth.backends.ModelBackend',
+    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 LOGIN_URL = 'login'
@@ -130,6 +148,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+
             ],
         },
     },
@@ -186,3 +205,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATIC_ROOT = '/home/venkat147/django_facebook_login/facebooklogin/fuser/static/'
