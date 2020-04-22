@@ -38,7 +38,9 @@
 
   <div id="Fade" class="w3-container city w3-animate-opacity" style="display:none">
       <br/>
-   <h3 class="text-center">Welcome {{ user.username }}</h3>
+       {% for ass in user.socialaccount_set.all %}
+   <h3 class="text-center">Welcome {{ ass.extra_data.name }} </h3>
+    {% endfor %}
       <div class="w3-container" id="about">
 
           <div>
@@ -123,10 +125,15 @@
 
   <div id="Left" class="w3-container city w3-animate-left" style="display:none">
       <br/>
-    {% for ass in backends.associated %}
+    {% for ass in user.socialaccount_set.all %}
           {% if ass.provider == 'facebook' %}
             <div class="col-md-6 social-container my-2">
-                <h3 class="text-center"> Your FaceBook Profile Url: <a href="{{ass.extra_data.profile_url}}">link</a></h3>
+
+                <h3 class="text-center"> Your FaceBook Profile Url: <button type="button" class="btn btn-primary">
+                    <a href="{{ass.extra_data.link}}" target="_blank"><span style="color:white"> VISIT </span></a></button>
+
+
+
             </div>
           {% endif %}
         {% endfor %}
@@ -142,7 +149,8 @@
   <div id="Right" class="w3-container city w3-animate-right" style="display:none">
       <br/>
    <h2> Visitors....</h2>
-        {% for ass in backends.associated %}
+         {% for ass in user.socialaccount_set.all %}
+
           {% if ass.provider == 'facebook' %}
             <div class="col-md-6">
                 <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
@@ -166,25 +174,25 @@
                         <tr>
                           <th scope="col">Source</th>
                           <th scope="col">Name</th>
-                          <th scope="col">email</th>
-                          <th scope="col">First_name</th>
-                            <th scope="col">Last_name</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Status</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">First_Name</th>
+                            <th scope="col">Last_Name</th>
+                            <!--<th scope="col">Location</th>-->
+                            <th scope="col">Account Id </th>
                             <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
-{% for ass in backends.associated %}
+ {% for ass in user.socialaccount_set.all %}
                         <tr>
                           <th> {{ ass.provider }} </th>
                           <td>{{ ass.extra_data.name }} </td>
                             <td>{{ ass.extra_data.email }}</td>
                             <td>{{ ass.extra_data.first_name }}</td>
                             <td>{{ ass.extra_data.last_name }}</td>
-                            <td>{{ ass.extra_data.location }}</td>
-                            <td>{{ ass.extra_data.accounts }}</td>
-                          <td><button type="button" class="btn btn-primary"><a href="{{ass.extra_data.profile_url}}" target="_blank"><span style="color:white">View</span></a></button></td>
+                            <!--<td>{{ ass.extra_data.location }}</td>-->
+                            <td>{{ ass.extra_data.id }}</td>
+                          <td><button type="button" class="btn btn-primary"><a href="{{ass.extra_data.link}}" target="_blank"><span style="color:white">View</span></a></button></td>
                         </tr>
  {% endfor %}
 
@@ -197,7 +205,7 @@
   <div id="Zoom" class="w3-container city w3-animate-zoom" style="display:none">
       <br/>
 <h2>Appointments....</h2>
-        {% for ass in backends.associated %}
+         {% for ass in user.socialaccount_set.all %}
           {% if ass.provider == 'facebook' %}
             <div class="col-md-6">
                 <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
