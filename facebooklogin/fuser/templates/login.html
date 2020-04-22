@@ -50,7 +50,7 @@
 
 <!--</body>-->
 <!--</html>-->
-
+{% load socialaccount %}
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -75,7 +75,8 @@
                     <br/>
 
                     <button class="btn btn-success mb-2 fa fa-facebook">
-                        <a href="{% url 'social:begin' 'facebook' %}"><span style="color:white">Login with Facebook</span></a>
+
+                        <a href='{% provider_login_url "facebook" method="oauth2" %}'><span style="color:white">Login with Facebook</span></a>
                     </button>
 
                 </div>
